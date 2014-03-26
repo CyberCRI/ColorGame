@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class InteractivePixel : MonoBehaviour {
@@ -10,9 +10,12 @@ public class InteractivePixel : MonoBehaviour {
 	public InteractivePixel left;
 	public InteractivePixel right;
 
+	public Cursor cursor;
+
 	// Use this for initialization
 	void Start () {
 		renderer.material.color = Color.black;
+		cursor = GameObject.Find("Cursor").GetComponent<Cursor>();
 	}
 
 	private float computeAddColor(float ancienneCouleur, float delta)
@@ -113,4 +116,8 @@ public class InteractivePixel : MonoBehaviour {
 		}
 	}
 	*/
+
+	public void OnMouseUp() {
+		cursor.selectPixel(this);
+	}
 }

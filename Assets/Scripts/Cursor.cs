@@ -7,11 +7,16 @@ public class Cursor : MonoBehaviour {
 	private InteractivePixel currentPixel;
 	public PixelGenerator generator;
 
+	public void selectPixel(InteractivePixel pixel)
+	{
+		currentPixel = pixel;
+		transform.position = currentPixel.gameObject.transform.position;
+	}
+
 	// Use this for initialization
 	void Start ()
 	{
-		currentPixel = generator.getStartPixel();
-		transform.position = currentPixel.gameObject.transform.position;
+		selectPixel(generator.getStartPixel());
 	}
 	
 	// Update is called once per frame
