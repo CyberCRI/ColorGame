@@ -73,7 +73,8 @@ public class InteractivePixel : MonoBehaviour {
 	{
 		addBlue(-_mDelta);
 	}
-	
+
+	/*
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetKeyUp("t"))
@@ -106,4 +107,5 @@ public class InteractivePixel : MonoBehaviour {
 			decreaseBlue();
 		}
 	}
+	*/
 }
