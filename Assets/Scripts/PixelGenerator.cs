@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PixelGenerator : MonoBehaviour {
 
+	public TargetImage image;
 	public GameObject prefab;
 	public GameObject pixel1;
 	public GameObject pixel2;
@@ -23,8 +24,8 @@ public class PixelGenerator : MonoBehaviour {
 	void Awake () {
 
 		//mario size is 12x16
-		int columns = 12;
-		int rows = 16;
+		int columns = image.getColumnCount();
+		int rows = image.getRowCount();
 
 		pixels = new InteractivePixel[rows, columns];
 

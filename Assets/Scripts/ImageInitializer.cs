@@ -3,15 +3,37 @@ using System.Collections;
 
 public class ImageInitializer : MonoBehaviour {
 
-	public SpriteRenderer image;
+	public TargetImage image;
 
 	// Use this for initialization
 	void Start () {
-		image.transform.localScale = new Vector3(40f, 40f, 1f);
+
+		float width = image.getWidth();
+		float height = image.getHeight();
+
+		float widthRatio = Screen.width / width;
+		float heightRatio = Screen.height / height;
+
+		float finalRatio = Mathf.Min(widthRatio, heightRatio);
+
+		image.transform.localScale = new Vector3(finalRatio, finalRatio, 1f);
+
+		Debug.Log(
+			 "width ="        +width
+			+", height ="       +height
+			+", widthRatio ="   +widthRatio 
+			+", heightRatio ="  +heightRatio
+			+", finalRatio ="   +finalRatio 
+			);
+
+		image.transform.position = new Vector3(0, 0, 0);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+		
+	void Update()
+	{
+		if(Input.GetKeyUp("e"))
+		{
+			image.gameObject.SetActive(!image.gameObject.activeSelf);
+		}
 	}
 }
