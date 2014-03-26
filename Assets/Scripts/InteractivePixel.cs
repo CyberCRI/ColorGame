@@ -3,45 +3,77 @@ using System.Collections;
 
 public class InteractivePixel : MonoBehaviour {
 
+	float _mDelta = 0.1f;
+
 	// Use this for initialization
 	void Start () {
 		renderer.material.color = Color.green;
 	}
 
+	private float computeAddColor(float ancienneCouleur, float delta)
+	{
+		float nouvelleCouleur = ancienneCouleur + delta;
+		
+		if(nouvelleCouleur > 1f){
+			nouvelleCouleur = 1f;
+		}
+		
+		if(nouvelleCouleur < 0f){
+			nouvelleCouleur = 0f;
+		}
+
+		return nouvelleCouleur;
+	}
+	
+	private void addRed(float delta) {
+		Color ancienneCouleur = renderer.material.color;		
+		renderer.material.color = new Color(computeAddColor(ancienneCouleur.r, delta),
+		                                    ancienneCouleur.g,
+		                                    ancienneCouleur.b);
+	}
+	private void addGreen(float delta) {
+		Color ancienneCouleur = renderer.material.color;		
+		renderer.material.color = new Color(ancienneCouleur.r,
+		                                    computeAddColor(ancienneCouleur.g, delta),
+		                                    ancienneCouleur.b);
+	}
 	private void addBlue(float delta) {
-		Color ancienneCouleur = renderer.material.color;
-		
-		//couleur avant
-		Debug.Log("avant "+ancienneCouleur);
-		
-		float nouveauBleu = ancienneCouleur.b + delta;
-		
-		if(nouveauBleu > 1f){
-			nouveauBleu = 1f;
-		}
-		
-		if(nouveauBleu < 0f){
-			nouveauBleu = 0f;
-		}
-		
+		Color ancienneCouleur = renderer.material.color;		
 		renderer.material.color = new Color(ancienneCouleur.r,
 		                                    ancienneCouleur.g,
-		                                    nouveauBleu);
-		//couleur après
-		Debug.Log("après "+renderer.material.color);
+		                                    computeAddColor(ancienneCouleur.b, delta));
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if(Input.GetKeyUp("t"))
+		{
+			addRed(_mDelta);
+		}
+		
+		if(Input.GetKeyUp("y"))
+		{
+			addRed (-_mDelta);
+		}
+		
+		if(Input.GetKeyUp("g"))
+		{
+			addGreen(_mDelta);
+		}
+		
+		if(Input.GetKeyUp("h"))
+		{
+			addGreen(-_mDelta);
+		}
+		
 	    if(Input.GetKeyUp("b"))
 		{
-			addBlue(0.1f);
+			addBlue(_mDelta);
 		}
 		
 		if(Input.GetKeyUp("n"))
 		{
-			addBlue (-0.1f);
+			addBlue (-_mDelta);
 		}
-
 	}
 }
