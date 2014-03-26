@@ -44,36 +44,66 @@ public class InteractivePixel : MonoBehaviour {
 		                                    computeAddColor(ancienneCouleur.b, delta));
 	}
 	
+	public void increaseRed()
+	{
+		addRed(_mDelta);
+	}
+	
+	public void decreaseRed()
+	{
+		addRed(-_mDelta);
+	}
+	
+	public void increaseGreen()
+	{
+		addGreen(_mDelta);
+	}
+	
+	public void decreaseGreen()
+	{
+		addGreen(-_mDelta);
+	}
+	
+	public void increaseBlue()
+	{
+		addBlue(_mDelta);
+	}
+	
+	public void decreaseBlue()
+	{
+		addBlue(-_mDelta);
+	}
+	
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetKeyUp("t"))
 		{
-			addRed(_mDelta);
+			increaseRed();
 		}
 		
 		if(Input.GetKeyUp("y"))
 		{
-			addRed (-_mDelta);
+			decreaseRed();
 		}
 		
 		if(Input.GetKeyUp("g"))
 		{
-			addGreen(_mDelta);
+			increaseGreen();
 		}
 		
 		if(Input.GetKeyUp("h"))
 		{
-			addGreen(-_mDelta);
+			decreaseGreen();
 		}
 		
 	    if(Input.GetKeyUp("b"))
 		{
-			addBlue(_mDelta);
+			increaseBlue();
 		}
 		
 		if(Input.GetKeyUp("n"))
 		{
-			addBlue (-_mDelta);
+			decreaseBlue();
 		}
 	}
 }
