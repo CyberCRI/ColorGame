@@ -5,9 +5,14 @@ public class InteractivePixel : MonoBehaviour {
 
 	float _mDelta = 0.1f;
 
+	public InteractivePixel top;
+	public InteractivePixel bottom;
+	public InteractivePixel left;
+	public InteractivePixel right;
+
 	// Use this for initialization
 	void Start () {
-		renderer.material.color = Color.green;
+		renderer.material.color = Color.black;
 	}
 
 	private float computeAddColor(float ancienneCouleur, float delta)

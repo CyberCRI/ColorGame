@@ -4,15 +4,14 @@ using System.Collections;
 public class Cursor : MonoBehaviour {
 
 	//référence vers l'objet pixel
-	public InteractivePixel interactivePixel;
 	private InteractivePixel currentPixel;
-	public Vector3 initialPosition;
+	public PixelGenerator generator;
 
 	// Use this for initialization
 	void Start ()
 	{
-		//stocker la position de départ du curseur
-		initialPosition = transform.position;
+		currentPixel = generator.getStartPixel();
+		transform.position = currentPixel.gameObject.transform.position;
 	}
 	
 	// Update is called once per frame
@@ -22,18 +21,26 @@ public class Cursor : MonoBehaviour {
 		// les modifications de couleur s'appliquent
 		//si on réappuie sur "E" le curseur retourne à sa position de départ
 		// les modifications de couleur ne s'appliquent pas
-		if (Input.GetKeyUp("e"))
+		
+		if (Input.GetKeyUp(KeyCode.UpArrow))
 		{
-			if(currentPixel != null)
-			{
-				currentPixel = null;
-				transform.position = initialPosition;
-			}
-			else
-			{
-				currentPixel = interactivePixel;
-				transform.position = currentPixel.gameObject.transform.position;
-			}
+			currentPixel = currentPixel.top;
+			transform.position = currentPixel.gameObject.transform.position;
+		}
+		if (Input.GetKeyUp(KeyCode.DownArrow))
+		{
+			currentPixel = currentPixel.bottom;
+			transform.position = currentPixel.gameObject.transform.position;
+		}
+		if (Input.GetKeyUp(KeyCode.LeftArrow))
+		{
+			currentPixel = currentPixel.left;
+			transform.position = currentPixel.gameObject.transform.position;
+		}
+		if (Input.GetKeyUp(KeyCode.RightArrow))
+		{
+			currentPixel = currentPixel.right;
+			transform.position = currentPixel.gameObject.transform.position;
 		}
 		
 		if(currentPixel != null)
@@ -42,19 +49,19 @@ public class Cursor : MonoBehaviour {
 			{
 				currentPixel.increaseRed();
 			}
-			if (Input.GetKeyUp("y"))
+			if (Input.GetKeyUp("g"))
 			{
 				currentPixel.increaseGreen();
 			}
-			if (Input.GetKeyUp("g"))
+			if (Input.GetKeyUp("b"))
 			{
 				currentPixel.increaseBlue();
 			}
-			if (Input.GetKeyUp("h"))
+			if (Input.GetKeyUp("y"))
 			{
 				currentPixel.decreaseRed();
 			}
-			if (Input.GetKeyUp("b"))
+			if (Input.GetKeyUp("h"))
 			{
 				currentPixel.decreaseGreen();
 			}
