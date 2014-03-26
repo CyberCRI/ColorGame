@@ -21,6 +21,8 @@ public class ImageInitializer : MonoBehaviour {
 		Debug.Log(
 			 "width ="        +width
 			+", height ="       +height
+			+", Screen.width =" +Screen.width
+			+", Screen.height =" +Screen.height
 			+", widthRatio ="   +widthRatio 
 			+", heightRatio ="  +heightRatio
 			+", finalRatio ="   +finalRatio 

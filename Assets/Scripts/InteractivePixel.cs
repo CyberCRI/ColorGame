@@ -82,41 +82,6 @@ public class InteractivePixel : MonoBehaviour {
 		addBlue(-_mDelta);
 	}
 
-	/*
-	// Update is called once per frame
-	void Update () {
-		if(Input.GetKeyUp("t"))
-		{
-			increaseRed();
-		}
-		
-		if(Input.GetKeyUp("y"))
-		{
-			decreaseRed();
-		}
-		
-		if(Input.GetKeyUp("g"))
-		{
-			increaseGreen();
-		}
-		
-		if(Input.GetKeyUp("h"))
-		{
-			decreaseGreen();
-		}
-		
-	    if(Input.GetKeyUp("b"))
-		{
-			increaseBlue();
-		}
-		
-		if(Input.GetKeyUp("n"))
-		{
-			decreaseBlue();
-		}
-	}
-	*/
-
 	public void OnMouseUp() {
 		cursor.selectPixel(this);
 	}
